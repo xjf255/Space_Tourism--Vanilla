@@ -3,6 +3,13 @@ import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
 
+fetch('home.html')
+  .then(res => res.text())
+  .then(html => console.log(html))
+  .catch(err => console.error('Error al recuperar el archivo:'));
+
+
+
 document.querySelector('#app').innerHTML = `
   <div>
     <a href="https://vitejs.dev" target="_blank">
