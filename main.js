@@ -1,5 +1,3 @@
-import './style.css'
-
 const navList = ['home', 'destination', 'crew', 'technology']
 const $fragment = document.createDocumentFragment()
 const pageInit = 0
@@ -24,24 +22,17 @@ document.addEventListener('click', (e) => {
   }
 })
 
-// async function getData() {
-//   try {
-//     const res = await fetch('nav.html')
-//     const json = await res.text()
+async function getData() {
+  try {
+    const res = await fetch('./src/home.html')
+    const json = await res.text()
 
-//     if(!res.ok)throw {statusText : res.statusText, status: res.status}
-//     document.querySelector('#app').innerHTML = `
-//     <div>
-//       ${json}
-//     </div>`
-//   } catch (error) {
-//     document.querySelector('#app').innerHTML = `
-//     <div>
-//       ${error}
-//     </div>`
-//   }
+    if(!res.ok)throw {statusText : res.statusText, status: res.status}
+    document.querySelector('main').innerHTML = json
+  } catch (error) {
+    document.querySelector('main').innerHTML = error
+  }
+}
 
-// }
-
-// getData()
+getData()
 

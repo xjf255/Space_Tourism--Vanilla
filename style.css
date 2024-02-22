@@ -1,5 +1,5 @@
 :root {
-  /* font-family: "Bellefair", serif; */
+  font-family: "Bellefair", serif;
   font-weight: 400;
   font-style: normal;
   line-height: 1.5;
@@ -26,12 +26,19 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-image: url(/public/image/home/background-home-desktop.jpg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: url(/image/home/background-home-desktop.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-strong{
+p{
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+strong {
   font-weight: 900;
 }
 
@@ -61,11 +68,18 @@ strong{
     text-transform: uppercase;
   }
 
-  & li{
+  & li {
     padding: 30px 10px;
     position: relative;
+    cursor: pointer;
   }
-  & li:hover::after, .li--active::after{
+
+  & .li--active{
+    cursor: default;
+  }
+
+  & li:hover::after,
+  .li--active::after {
     content: '';
     padding: 1px;
     background-color: wheat;
@@ -73,5 +87,41 @@ strong{
     bottom: 0;
     left: 0;
     width: 100%;
+  }
+}
+
+main {
+  height: 70vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  letter-spacing: 2px;
+
+  & article {
+    width: 30%;
+    font-size: 20px;
+
+    & span {
+      font-size: 2rem;
+
+      & h1 {
+        font-size: 12rem;
+        font-weight: 300;
+      }
+    }
+  }
+
+  & div {
+    width: 250px;
+    height: 250px;
+    margin-top: 200px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    display: grid;
+    place-items: center;
+    background-color: white;
+    border-radius: 50%;
+    color: #000;
   }
 }
