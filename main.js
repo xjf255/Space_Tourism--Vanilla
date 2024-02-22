@@ -1,31 +1,47 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
 
-fetch('home.html')
-  .then(res => res.text())
-  .then(html => console.log(html))
-  .catch(err => console.error('Error al recuperar el archivo:'));
+const navList = ['home', 'destination', 'crew', 'technology']
+const $fragment = document.createDocumentFragment()
+const pageInit = 0
 
+navList.map((element, index) => {
+  const $li = document.createElement('li')
+  $li.innerHTML = `<strong>0${index}</strong> ${element}`
+  if (index === pageInit) $li.className = 'li--active'
+  $fragment.appendChild($li)
+})
+document.getElementById('navbar').appendChild($fragment)
 
+const itemNav = document.querySelectorAll('li')
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+document.addEventListener('click', (e) => {
+  if (e.target.matches('li')) {
+    itemNav.forEach(li => {
+      if (e.target === li || li.classList.value === 'li--active') {
+        li.classList.toggle('li--active')
+      }
+    })
+  }
+})
 
-setupCounter(document.querySelector('#counter'))
+// async function getData() {
+//   try {
+//     const res = await fetch('nav.html')
+//     const json = await res.text()
+
+//     if(!res.ok)throw {statusText : res.statusText, status: res.status}
+//     document.querySelector('#app').innerHTML = `
+//     <div>
+//       ${json}
+//     </div>`
+//   } catch (error) {
+//     document.querySelector('#app').innerHTML = `
+//     <div>
+//       ${error}
+//     </div>`
+//   }
+
+// }
+
+// getData()
+
